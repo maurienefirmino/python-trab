@@ -17,16 +17,18 @@ def header():
 #Função que salva as peças
 def save():
 	arq = open('arq/pecas.dat', 'wb')
-	for i in range(2):
+	for i in range(1,51):
 
 		print 'CADASTRANDO O PRODUTO NÚMERO: ',i
 
 		cod = int(raw_input('Digite o código do produto:'))
+		peca = str(raw_input('Digite a peça:'))
 		desc = str(raw_input('Digite a descrição do produto:'))
 		qtd = int(raw_input('Digite a quantidade do produto em estoque:'))
 		preco = float(raw_input('Digite o preço do produto em questão:'))
 
 		pickle.dump(cod,arq)
+		pickle.dump(peca,arq)
 		pickle.dump(desc,arq)
 		pickle.dump(qtd,arq)
 		pickle.dump(preco,arq)
@@ -41,14 +43,16 @@ def read():
 
 	print 'TODOS OS PRODUTOS CADASTRADOS:'
 
-	for i in range(2):
+	for i in range(1,51):
 		cod = pickle.load(arq)
+		peca = pickle.load(arq)
 		desc = pickle.load(arq)
 		qtd = pickle.load(arq)
 		preco = pickle.load(arq)
 
 		print '\033[32m Listando o produto: ', i , '\033[0;0m' 
 		print 'Código : ', cod
+		print 'Peça:', peca
 		print 'Descrição: ', desc
 		print 'Quantidade: ', qtd
 		print 'Preço: ', preco
